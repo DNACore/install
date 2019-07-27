@@ -17,7 +17,7 @@ MACOS_OLDEST_SUPPORTED = "10.12".freeze
 ENV["HOMEBREW_NO_ANALYTICS_THIS_RUN"] = "1"
 ENV["HOMEBREW_NO_ANALYTICS_MESSAGE_OUTPUT"] = "1"
 
-# get nicer global variables
+# get nicer global variablesf
 require "English"
 
 module Tty
@@ -115,12 +115,7 @@ def macos_version
 end
 
 def should_install_command_line_tools?
-  if macos_version > "10.13"
-    !File.exist?("/Library/Developer/CommandLineTools/usr/bin/git")
-  else
-    !File.exist?("/Library/Developer/CommandLineTools/usr/bin/git") ||
-      !File.exist?("/usr/include/iconv.h")
-  end
+  return false
 end
 
 def user_only_chmod?(path)
